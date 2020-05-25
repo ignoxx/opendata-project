@@ -1,0 +1,4 @@
+{
+    "watch": ["index.js", "static/"],
+    "ext": "js, html"
+  }
