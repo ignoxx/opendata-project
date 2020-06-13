@@ -12,6 +12,7 @@ app.use('/data', express.static(__dirname + '/static/data/'));
 app.use('/scripts', express.static(__dirname + '/static/scripts/'));
 app.use('/style', express.static(__dirname + '/static/style/'));
 
+var port = process.env.PORT || 3000;
 
 
 
@@ -42,6 +43,6 @@ app.get('/', function (req, res) {
     
 });
 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!');
+app.listen(port, function () {
+    console.log('Example app listening on port ' + port);
 });
