@@ -12,6 +12,7 @@ app.use('/data', express.static(__dirname + '/static/data/'));
 app.use('/scripts', express.static(__dirname + '/static/scripts/'));
 app.use('/style', express.static(__dirname + '/static/style/'));
 
+var port = process.env.PORT || 3000;
 
 
 
