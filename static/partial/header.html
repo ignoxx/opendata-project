@@ -5,9 +5,9 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">About</a>
-      <a class="nav-item nav-link" href="#">Source</a>
+      <a class="nav-item nav-link {% if home_active %} active {% endif %}" href="/">Home</a>
+      <a class="nav-item nav-link {% if about_active %} active {% endif %}" href="about">About</a>
+      <a class="nav-item nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/ignasKavaliauskas/opendata-project">Source</a>
     </div>
   </div>
 </nav>

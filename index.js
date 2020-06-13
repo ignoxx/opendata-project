@@ -1,18 +1,17 @@
+var port = process.env.PORT || 3000;
 var nunjucks = require('nunjucks');
 var express = require('express');
-// var mysql = require('mysql');
 var app = express();
 var path = __dirname;
 
-app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'));
-app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
-app.use('/popper', express.static(__dirname + '/node_modules/popper.js/dist/'));
-app.use('/d3', express.static(__dirname + '/node_modules/d3/dist'));
-app.use('/data', express.static(__dirname + '/static/data/'));
-app.use('/scripts', express.static(__dirname + '/static/scripts/'));
-app.use('/style', express.static(__dirname + '/static/style/'));
+app.use('/bootstrap', express.static(path + '/node_modules/bootstrap/dist/'));
+app.use('/jquery', express.static(path + '/node_modules/jquery/dist/'));
+app.use('/popper', express.static(path + '/node_modules/popper.js/dist/'));
+app.use('/d3', express.static(path + '/node_modules/d3/dist'));
+app.use('/data', express.static(path + '/static/data/'));
+app.use('/scripts', express.static(path + '/static/scripts/'));
+app.use('/style', express.static(path + '/static/style/'));
 
-var port = process.env.PORT || 3000;
 
 nunjucks.configure('static/', {
     autoescape: true,
@@ -20,15 +19,13 @@ nunjucks.configure('static/', {
 });
 
 app.get('/', function (req, res) {
-    res.render(path + "/static/pages/index.html")
- 
-    // con.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
-    // if (error) throw error;
-    // console.log('The solution is: ', results[0].solution);
-    // });
-    
+    res.render(path + "/static/pages/index.html", {home_active: true})    
+});
+
+app.get('/about', function (req, res) {
+    res.render(path + "/static/pages/about.html", {about_active: true})    
 });
 
 app.listen(port, function () {
-    console.log('Example app listening on port ' + port);
+    console.log('Webserver listening on port ' + port);
 });
