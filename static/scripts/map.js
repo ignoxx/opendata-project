@@ -38,9 +38,11 @@ d3.json("data/berlin.geojson").then(function (data) {
     var areas = group.append("path")
         .attr("d", path)
         .on('mousemove', function (d) {
-            var mouse = d3.mouse(svg.node()).map(function (d) {
-                return parseInt(d);
-            });
+            var mouse = [
+                d3.event.pageX,
+                d3.event.pageY
+            ]
+
             tooltip.classed('hidden', false)
                 .attr('style', 'left:' + (mouse[0] + 15) +
                     'px; top:' + (mouse[1] - 35) + 'px')

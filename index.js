@@ -14,20 +14,6 @@ app.use('/style', express.static(__dirname + '/static/style/'));
 
 var port = process.env.PORT || 3000;
 
-
-
-// var con = mysql.createConnection({
-//     host: "sql7.freemysqlhosting.net",
-//     user: "sql7343374",
-//     password: "ymtK3DC6dk",
-//     database: 'sql7343374'
-// });
-
-// con.connect(function (err) {
-//     if (err) throw err;
-//     console.log("Connected!");
-// });
-
 nunjucks.configure('static/', {
     autoescape: true,
     express: app

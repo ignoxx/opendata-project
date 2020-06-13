@@ -19,9 +19,17 @@ path {
     stroke: #fff;
     stroke-width: 1px;
 }
+
 path:hover {
     fill: rgb(128, 128, 128);
 }
+
 .hidden {
     display: none;
+}
+
+.centered {
+    text-align: center;
+    margin: auto;
+    width: 50%;
 }
