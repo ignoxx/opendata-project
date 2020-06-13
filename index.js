@@ -8,9 +8,9 @@ app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/'
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 app.use('/popper', express.static(__dirname + '/node_modules/popper.js/dist/'));
 app.use('/d3', express.static(__dirname + '/node_modules/d3/dist'));
-app.use('/d3-geo', express.static(__dirname + '/node_modules/d3-geo/dist'));
-app.use('/d3-scale', express.static(__dirname + '/node_modules/d3-scale/dist'));
 app.use('/data', express.static(__dirname + '/static/data/'));
+app.use('/scripts', express.static(__dirname + '/static/scripts/'));
+app.use('/style', express.static(__dirname + '/static/style/'));
 
 
 
