@@ -1,4 +1,8 @@
 {
-    "watch": ["index.js", "static/"],
-    "ext": "js, html"
-  }
+  "watch": [
+    "index.js",
+    "DataParser.js",
+    "static/"
+  ],
+  "ext": "js, html"
+}

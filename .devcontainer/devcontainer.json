@@ -16,7 +16,8 @@
 		"oderwat.indent-rainbow",
 		"yzhang.markdown-all-in-one",
 		"mechatroner.rainbow-csv",
-		"ronnidc.nunjucks"
+		"ronnidc.nunjucks",
+		"okitavera.vscode-nunjucks-formatter"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

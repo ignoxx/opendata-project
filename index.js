@@ -1,9 +1,16 @@
-var port = process.env.PORT || 3000;
-var nunjucks = require('nunjucks');
-var express = require('express');
-var app = express();
-var path = __dirname;
+const nunjucks = require('nunjucks');
+const express = require('express');
+const DataParser = require('./DataParser')
+const app = express();
+const bodyParser = require('body-parser');
 
+
+const port = process.env.PORT || 3000;
+const path = __dirname;
+
+app.use(bodyParser.json());
+
+// Paths visible to the client
 app.use('/bootstrap', express.static(path + '/node_modules/bootstrap/dist/'));
 app.use('/jquery', express.static(path + '/node_modules/jquery/dist/'));
 app.use('/popper', express.static(path + '/node_modules/popper.js/dist/'));
@@ -12,18 +19,32 @@ app.use('/data', express.static(path + '/static/data/'));
 app.use('/scripts', express.static(path + '/static/scripts/'));
 app.use('/style', express.static(path + '/static/style/'));
 
-
+// Use nunjucks as templating engine
 nunjucks.configure('static/', {
     autoescape: true,
     express: app
 });
 
+// Init our data parser
+var dataParser = new DataParser(path + "/static/data/Berlin_crimes.csv");
+console.log(Object.keys( dataParser.getData()))
 app.get('/', function (req, res) {
-    res.render(path + "/static/pages/index.html", {home_active: true})    
+    
+    let payload = {
+        homeActive: true,
+        years: dataParser.years,
+        header: Object.keys( dataParser.getData() )
+    }
+
+    res.render(path + "/static/pages/index.html", payload)
 });
 
 app.get('/about', function (req, res) {
-    res.render(path + "/static/pages/about.html", {about_active: true})    
+    res.render(path + "/static/pages/about.html", { aboutActive: true })
+});
+
+app.get('/filter', function (req, res) {
+    console.log(req.body);
 });
 
 app.listen(port, function () {

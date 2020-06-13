@@ -3,20 +3,10 @@ var h = 500;
 
 var svg = d3.select("body").append("svg").attr("width", w).attr("height", h);
 
-d3.csv("data/Berlin_crimes.csv").then(function (data) {
-    data.forEach(function (d) {
-        d["Agg_assault"] = +d["Agg_assault"]
-    });
-
-    console.log(data.forEach(function (d) {
-        console.log(d["District"])
-    }));
-});
-
 d3.json("data/berlin.geojson").then(function (data) {
-    console.log(data.features.forEach(function (d) {
+    data.features.forEach(function (d) {
         console.log(d.properties.name)
-    }))
+    })
 
     var tooltip = d3.select("body").append("div")
         .attr("class", "hidden tooltip");
