@@ -17,7 +17,8 @@
 		"yzhang.markdown-all-in-one",
 		"mechatroner.rainbow-csv",
 		"ronnidc.nunjucks",
-		"okitavera.vscode-nunjucks-formatter"
+		"okitavera.vscode-nunjucks-formatter",
+		"aeschli.vscode-css-formatter"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.

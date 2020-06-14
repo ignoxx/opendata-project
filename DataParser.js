@@ -20,45 +20,21 @@ class DataParser {
     parseData() {
         return d3.csvParse(this.csvRawData, (d) => {
 
-            let fData;
-            if (+d.Year === 2014) {
-                fData = {
-                    Year: +d.Year,
-                    District: d.District,
-                    Location: d.Location,
-                    Robbery: +d.Robbery,
-                    Street_robbery: +d.Street_robbery,
-                    Injury: +d.Injury,
-                    Threat: +d.Threat,
-                    Theft: +d.Theft,
-                    Burglary: +d.Burglary,
-                    Fire: +d.Fire,
-                    Damage: +d.Damage,
-                    Graffiti: +d.Graffiti,
-                    Drugs: +d.Drugs,
-                }
+            let fData = {
+                Year: +d.Year,
+                District: d.District,
+                Location: d.Location,
+                Robbery: +d.Robbery,
+                Street_robbery: +d.Street_robbery,
+                Injury: +d.Injury,
+                Threat: +d.Threat,
+                Theft: +d.Theft,
+                Burglary: +d.Burglary,
+                Fire: +d.Fire,
+                Damage: +d.Damage,
+                Graffiti: +d.Graffiti,
+                Drugs: +d.Drugs,
             }
-
-            // d.Year = +d.Year;
-            // d.Code = +d.Code;
-            // d.Robbery = +d.Robbery;
-            // d.Street_robbery = +d.Street_robbery;
-            // d.Injury = +d.Injury;
-            // d.Agg_Assault = +d.Agg_Assault;
-            // d.Threat = +d.Threat;
-            // d.Theft = +d.Theft;
-            // d.Car = +d.Car;
-            // d.From_car = +d.From_car;
-            // d.Bike = +d.Bike;
-            // d.Burglary = +d.Burglary;
-            // d.Fire = +d.Fire;
-            // d.Arson = +d.Arson;
-            // d.Damage = +d.Damage;
-            // d.Graffiti = +d.Graffiti;
-            // d.Drugs = +d.Drugs;
-            // d.Local = +d.Local;
-
-
             return fData;
         });
     }
@@ -83,7 +59,7 @@ class DataParser {
     }
 
     getDataFromYear(year) {
-        
+
     }
 }
 

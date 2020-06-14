@@ -1,7 +1,10 @@
 var w = 900;
 var h = 500;
 
-var svg = d3.select("body").append("svg").attr("width", w).attr("height", h);
+var svg = d3.select("body")
+    .append("svg")
+    .attr("width", w)
+    .attr("height", h)
 
 d3.json("data/berlin.geojson").then(function (data) {
     data.features.forEach(function (d) {
@@ -16,6 +19,7 @@ d3.json("data/berlin.geojson").then(function (data) {
         .enter()
         .append("g")
 
+
     var b = d3.geoBounds(data);
 
     var projection = d3.geoMercator()
@@ -27,6 +31,7 @@ d3.json("data/berlin.geojson").then(function (data) {
 
     var areas = group.append("path")
         .attr("d", path)
+        .attr("class", "unselected")
         .on('mousemove', function (d) {
             var mouse = [
                 d3.event.pageX,
@@ -41,10 +46,26 @@ d3.json("data/berlin.geojson").then(function (data) {
         .on('mouseout', function () {
             tooltip.classed('hidden', true);
         })
-        .on("click", (d) => {
-            let searchBox = $(".search-input");
-            searchBox.focus()
-            searchBox.val(d.properties.name);
-            searchBox.blur()
+        .on("click", function (d) {
+            let district = d3.select(this);
+            var searchBox = $(".search-input");
+
+            function updateDistrictFilter(district) {
+                searchBox.focus()
+                searchBox.val(district);
+                searchBox.blur()
+            }
+
+            if(district.attr("class") == "selected") {
+                updateDistrictFilter("");
+                d3.selectAll('path').attr('class', "unselected");
+                $("#table").bootstrapTable("showColumn", "District")
+            }
+            else {
+                updateDistrictFilter(d.properties.name);
+                d3.selectAll('path').attr('class', "unselected");
+                district.attr("class", "selected");
+                $("#table").bootstrapTable("hideColumn", "District")
+            }
         })
 });

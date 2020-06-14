@@ -2,72 +2,52 @@
 
 <hr>
 
-<div class="centered filter-options">
-  {# <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        Year
-    </button>
-  <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-    {% for year in years %}
-      <button id="{{ year }}" class="dropdown-item btn btn-dark">{{ year }}</button>
-    {% endfor %}
+<div class="container-fluid">
+  <div id="toolbar">
+    <div class="form-inline" role="form">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="inputYearSelection">Year</label>
+      </div>
+      <select class="custom-select" id="inputYearSelection">
+        <option selected value="all">2012-2019</option>
+        {% for year in years %}
+          <option id="{{ year }}" value="{{ year }}">{{ year }}</option>
+        {% endfor %}
+      </select>
+    </div>
 
-  </div> #}
+  </div>
 
-  {# <select class="form-control">
-    {% for year in years %}
-      <option id="{{ year }}" value="{{ year }}">{{ year }}</option>
-    {% endfor %}
-  </select> #}
-
-  {# <button type="button" class="btn btn-outline-dark">Dark</button>
-  <button type="button" class="btn btn-outline-dark">Dark</button>
-  <button type="button" class="btn btn-outline-dark">Dark</button>
-  <button type="button" class="btn btn-outline-dark">Dark</button>
-  <button type="button" class="btn btn-outline-dark">Dark</button>
-  <button type="button" class="btn btn-outline-dark">Dark</button>
-  <button type="button" class="btn btn-outline-dark">Dark</button>
-  <button type="button" class="btn btn-outline-dark">Dark</button> #}
-
-</div>
-
-<div class="container">
   <table
-      id="table"
-      data-toggle="table"
-      data-flat="true"
-      data-search="true"
-      data-pagination="true"
-      data-search-time-out="100">
+        id="table"
+        data-toolbar="#toolbar"
+        data-toggle="table"
+        data-flat="true"
+        data-search="true"
+        data-pagination="true"
+        data-search-time-out="100"
+        data-show-columns="true"
+        data-buttons-align="right"
+        data-show-fullscreen="true">
     <thead>
       <tr>
         {% for entry in header %}
-          <th data-sortable="true">{{entry}}</th>
+          <th data-sortable="true" data-visible="true" data-field="{{entry}}">{{entry}}</th>
         {% endfor %}
       </tr>
     </thead>
 
     <tbody>
-      
-        {% for data in tableData %}
-          <tr>
-            {% for d, i in data %}
-              <td> {{i}} </td>
-            {% endfor %}
-          </tr>
-        {% endfor %}
-      
 
-      {# <tr id="tr-id-2" class="tr-class-2">
-        <td id="td-id-2" class="td-class-2">
-          <a href="https://github.com/wenzhixin/multiple-select" target="_blank">multiple-select</a>
-        </td>
-        <td>1615</td>
-        <td>623</td>
-        <td>A jQuery plugin to select multiple elements with checkboxes :)
-        </td>
-      </tr> #}
-
+      {% for data in tableData %}
+        <tr>
+          {% for d, i in data %}
+            <td>
+              {{i}}
+            </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
     </tbody>
   </table>
 </div>

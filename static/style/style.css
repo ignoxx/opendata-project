@@ -1,5 +1,5 @@
 /* Center the MAP-SVG */
-body > svg {
+body>svg {
     display: block;
     margin: auto;
 }
@@ -14,14 +14,19 @@ div.tooltip {
     position: absolute;
 }
 
-path {
-    fill: #343a40;
-    stroke: #fff;
-    stroke-width: 1px;
+.selected {
+    fill: #6c757d;
+    !important;
 }
 
-path:hover {
+.unselected {
+    fill: #343a40;
+    !important;
+}
+
+.unselected:hover {
     fill: rgb(128, 128, 128);
+    !important;
 }
 
 .hidden {
