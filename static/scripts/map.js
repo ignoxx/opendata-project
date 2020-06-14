@@ -42,6 +42,9 @@ d3.json("data/berlin.geojson").then(function (data) {
             tooltip.classed('hidden', true);
         })
         .on("click", (d) => {
-            console.log(d.properties.name)
+            let searchBox = $(".search-input");
+            searchBox.focus()
+            searchBox.val(d.properties.name);
+            searchBox.blur()
         })
 });

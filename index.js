@@ -3,6 +3,7 @@ const express = require('express');
 const DataParser = require('./DataParser')
 const app = express();
 const bodyParser = require('body-parser');
+const { data } = require('jquery');
 
 
 const port = process.env.PORT || 3000;
@@ -27,13 +28,14 @@ nunjucks.configure('static/', {
 
 // Init our data parser
 var dataParser = new DataParser(path + "/static/data/Berlin_crimes.csv");
-console.log(Object.keys( dataParser.getData()))
+
 app.get('/', function (req, res) {
-    
+    console.log(dataParser.getData())
     let payload = {
         homeActive: true,
         years: dataParser.years,
-        header: Object.keys( dataParser.getData() )
+        header: dataParser.getKeys(),
+        tableData: dataParser.getData()
     }
 
     res.render(path + "/static/pages/index.html", payload)
