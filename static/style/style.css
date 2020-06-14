@@ -1,4 +1,5 @@
 /* Center the MAP-SVG */
+
 body>svg {
     display: block;
     margin: auto;
@@ -37,4 +38,12 @@ div.tooltip {
     text-align: center;
     margin: auto;
     width: 50%;
+}
+
+table {
+    font-size: 14px;
+}
+
+.uppercase {
+    text-transform: uppercase;
 }

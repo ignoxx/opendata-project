@@ -56,7 +56,7 @@ d3.json("data/berlin.geojson").then(function (data) {
                 searchBox.blur()
             }
 
-            if(district.attr("class") == "selected") {
+            if (district.attr("class") == "selected") {
                 updateDistrictFilter("");
                 d3.selectAll('path').attr('class', "unselected");
                 $("#table").bootstrapTable("showColumn", "District")

@@ -28,11 +28,21 @@
         data-search-time-out="100"
         data-show-columns="true"
         data-buttons-align="right"
-        data-show-fullscreen="true">
+        data-show-fullscreen="true"
+        data-show-pagination-switch="true"
+        data-show-footer="true"
+        >
     <thead>
       <tr>
         {% for entry in header %}
-          <th data-sortable="true" data-visible="true" data-field="{{entry}}">{{entry}}</th>
+          <th 
+            data-field="{{entry}}"
+            data-footer-formatter="{% if entry in ['Location', 'District'] %}{% elif entry == 'Year' %}yearFormatter{% else %}sumFormatter{% endif %}"
+            data-sortable="true" 
+            data-visible="true" 
+            >
+
+            {{entry}}</th>
         {% endfor %}
       </tr>
     </thead>
@@ -51,3 +61,7 @@
     </tbody>
   </table>
 </div>
+
+<script>
+
+</script>
