@@ -3,13 +3,27 @@ $("#inputYearSelection").on('change', function (e) {
     var valueSelected = this.value;
     var filter;
 
-    if(valueSelected == "all")
+    if (valueSelected == "all")
         filter = {};
-    else{
+    else {
         filter = {
             Year: [valueSelected]
         }
     }
-    
+
     $("#table").bootstrapTable("filterBy", filter)
 })
+
+function yearFormatter() {
+    return 'Total'
+}
+
+function sumFormatter(data) {
+    var field = this.field
+
+    var total_sum = data.reduce(function (sum, row) {
+        return (sum) + (parseInt(row[field]) || 0);
+    }, 0);
+
+    return total_sum;
+}
