@@ -13,6 +13,8 @@ app.use(bodyParser.json());
 
 // Paths visible to the client
 app.use('/bootstrap', express.static(path + '/node_modules/bootstrap/dist/'));
+app.use('/bootstrap-table', express.static(path + '/node_modules/bootstrap-table/dist/'));
+
 app.use('/jquery', express.static(path + '/node_modules/jquery/dist/'));
 app.use('/popper', express.static(path + '/node_modules/popper.js/dist/'));
 app.use('/d3', express.static(path + '/node_modules/d3/dist'));
@@ -30,12 +32,11 @@ nunjucks.configure('static/', {
 var dataParser = new DataParser(path + "/static/data/Berlin_crimes.csv");
 
 app.get('/', function (req, res) {
-    console.log(dataParser.getData())
     let payload = {
         homeActive: true,
         years: dataParser.years,
         header: dataParser.getKeys(),
-        tableData: dataParser.getData()
+        tableData: dataParser.getData(),
     }
 
     res.render(path + "/static/pages/index.html", payload)
