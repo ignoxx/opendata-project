@@ -3,7 +3,6 @@ const express = require('express');
 const DataParser = require('./src/DataParser')
 const bodyParser = require('body-parser');
 
-
 const port = process.env.PORT || 3000;
 const path = __dirname;
 const app = express();
@@ -30,6 +29,7 @@ nunjucks.configure('static/', {
 // Init our data parser
 var dataParser = new DataParser(path + "/static/data/Berlin_crimes.csv");
 
+// Handle the routing
 app.get('/', function (req, res) {
     let payload = {
         homeActive: true,
@@ -45,6 +45,7 @@ app.get('/about', function (req, res) {
     res.render(path + "/static/pages/about.html", { aboutActive: true })
 });
 
+// Run webserver
 app.listen(port, function () {
     console.log('Webserver listening on port ' + port);
 });

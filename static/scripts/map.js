@@ -1,3 +1,4 @@
+// Canvas size of the map
 var width = 900;
 var height = 500;
 
