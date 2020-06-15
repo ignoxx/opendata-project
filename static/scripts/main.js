@@ -1,29 +1,26 @@
+// Detect year-filter change and update filter
 $("#inputYearSelection").on('change', function (e) {
-    var optionSelected = $("option:selected", this);
-    var valueSelected = this.value;
-    var filter;
+    let valueSelected = this.value;
+    let filter = {};
 
-    if (valueSelected == "all")
-        filter = {};
-    else {
-        filter = {
-            Year: [valueSelected]
-        }
-    }
+    if (valueSelected != "all")
+        filter = {Year: [valueSelected]};
 
     $("#table").bootstrapTable("filterBy", filter)
 })
 
+// Tablefooter format functions
 function yearFormatter() {
     return 'Total'
 }
 
+// Calculate sum of current column
 function sumFormatter(data) {
-    var field = this.field
+    let field = this.field
 
-    var total_sum = data.reduce(function (sum, row) {
+    let totalSum = data.reduce(function (sum, row) {
         return (sum) + (parseInt(row[field]) || 0);
     }, 0);
 
-    return total_sum;
+    return totalSum;
 }

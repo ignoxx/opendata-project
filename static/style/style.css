@@ -1,5 +1,4 @@
 /* Center the MAP-SVG */
-
 body>svg {
     display: block;
     margin: auto;
@@ -16,18 +15,15 @@ div.tooltip {
 }
 
 .selected {
-    fill: #6c757d;
-    !important;
+    fill: #6c757d !important;
 }
 
 .unselected {
-    fill: #343a40;
-    !important;
+    fill: #343a40 !important;
 }
 
 .unselected:hover {
-    fill: rgb(128, 128, 128);
-    !important;
+    fill: rgb(128, 128, 128) !important;
 }
 
 .hidden {
@@ -42,8 +38,4 @@ div.tooltip {
 
 table {
     font-size: 14px;
-}
-
-.uppercase {
-    text-transform: uppercase;
 }

@@ -1,8 +1,11 @@
+<!-- Generate the map -->
 <script src="scripts/map.js"></script>
 
 <hr>
 
 <div class="container-fluid">
+
+  <!-- Toolbar above the table -->
   <div id="toolbar">
     <div class="form-inline" role="form">
       <div class="input-group-prepend">
@@ -15,7 +18,6 @@
         {% endfor %}
       </select>
     </div>
-
   </div>
 
   <table
@@ -30,8 +32,8 @@
         data-buttons-align="right"
         data-show-fullscreen="true"
         data-show-pagination-switch="true"
-        data-show-footer="true"
-        >
+        data-show-footer="true">
+
     <thead>
       <tr>
         {% for entry in header %}
@@ -39,16 +41,14 @@
             data-field="{{entry}}"
             data-footer-formatter="{% if entry in ['Location', 'District'] %}{% elif entry == 'Year' %}yearFormatter{% else %}sumFormatter{% endif %}"
             data-sortable="true" 
-            data-visible="true" 
-            >
-
-            {{entry}}</th>
+            data-visible="true">
+            {{entry}}
+          </th>
         {% endfor %}
       </tr>
     </thead>
 
     <tbody>
-
       {% for data in tableData %}
         <tr>
           {% for d, i in data %}
@@ -59,9 +59,6 @@
         </tr>
       {% endfor %}
     </tbody>
+
   </table>
 </div>
-
-<script>
-
-</script>
